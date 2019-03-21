@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<title>Quiz</title>
+</head>
+<body>
+	<div class="start">
+		<div class="wrapper">
+			<h1>Привет! <br>Это географическая викторина!</h1>
+			<p class="strart-content">Правила игры простые. Я даю подсказку, вы отмечаете на карте страну, с которой у вас моя подсказка ассоциируется.</p>
+			<button class="start-btn btn">Ясно, поехали!</button>
+			<p class="start-ps"><span>* </span> Некоторые вопросы могут показаться дурацкими, это всё из-за того что они такие =(</p>
+		</div>
+	</div>
+	<div class="quiz-container">
+		<div class="container">
+			<div class="results"></div>
+			<div class="quiz">
+			
+			</div>
+			<button class="btn submit">Подтвердить</button>
+			<button class="btn submitAll">Узнать результат</button>
+		</div>
+		<div id="map"></div>
+  </div>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=0974903a-8446-42aa-ab4c-6aa6edab05ba" type="text/javascript"></script>
+	<script src="script.js"></script>
+</body>
+</html>
