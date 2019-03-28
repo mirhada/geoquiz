@@ -34,7 +34,7 @@ function init() {
         return new ymaps.Placemark(coords, {
             iconCaption: 'Здесь'
         }, {
-            preset: 'islands#violetDotIconWithCaption',
+            preset: 'islands#blackDotIconWithCaption',
             draggable: true
         });
     }
@@ -43,11 +43,11 @@ function init() {
     function getCountry(coords) {
         ymaps.geocode(coords).then(function (res) {
             CountryName = res.geoObjects.get(0).properties.get('metaDataProperty.GeocoderMetaData.AddressDetails.Country.CountryName');
-            console.log(CountryName);  //выводим в консоль название старны по клику 
+            console.log(CountryName);  // Выводим в консоль название старны по клику 
         });
     }
 }
-
+// Вопросы для викторины
 const myQuestions = [
     {
     question: "Mamma mia! Мы приготовили лучшую пасту в твоей жизни, а ты не хочешь к нам приехать!",
@@ -62,11 +62,12 @@ const myQuestions = [
     correctAnswer: "Аргентина"
     }
 ];
+
 function buildQuiz() {
-    // we'll need a place to store the HTML output
+    // Тут храним выход HTML
     const output = [];
 
-    // for each question...
+    // Для каждого вопроса
     myQuestions.forEach((currentQuestion, questionNumber) => {
       output.push(
         `<div class="slide">
@@ -75,45 +76,42 @@ function buildQuiz() {
       );
     });
 
-    // finally combine our output list into one string of HTML and put it on the page
+    // Собираем наш выход в строку и добавляем в HTML
     quizContainer.innerHTML = output.join("");
-  }
+}
+
 const quizContainer = document.querySelector(".quiz");
-// создаём массив для записи ответов
+// Создаём массив для записи ответов
 var answers = [];
 var CountryName; 
-
-function pushAnswer(){  // выбивает ошибку CountryName is not defined
-    answers.push(CountryName); //по клику на Подтвердить добавляем строку со страной в массив
+// Добавление страны в массив ответов
+function pushAnswer(){ 
+    answers.push(CountryName); 
     console.log(answers); 
 };
 
 
-/*document.querySelector(".submit").addEventListener('click', pushAnswer);
-document.querySelector(".submit").addEventListener('click', showNextSlide);*/
 
 function showResults() {
     pushAnswer();
     slides[currentSlide].classList.remove("active-slide");
     submitButton.style.display = "none";
-    // keep track of user's answers
+    // Считаем правильные ответы
     let numCorrect = 0;
 
-    // for each question...
+    // Проверка на правильность ответа 
     myQuestions.forEach((currentQuestion, questionNumber) => {
-      // find selected answer
       const answer = answers[questionNumber];
-      // if answer is correct
       if (answer === currentQuestion.correctAnswer) {
-        // add to the number of correct answers
         numCorrect++;
       } 
     });
-    // show number of correct answers out of total
+    // Количество правильных ответов
     resultsContainer.innerHTML = `${numCorrect} из ${myQuestions.length}`;
 }
 
 const submitButton = document.querySelector(".submitAll");
+// Функция для смены вопросов
 function showSlide(n) {
     slides[currentSlide].classList.remove("active-slide");
     slides[n].classList.add("active-slide");
@@ -126,18 +124,17 @@ function showSlide(n) {
       submitButton.style.display = "none";
     }
 }
-
+// Переход на следующий слайд
 function showNextSlide() {
   showSlide(currentSlide + 1);
 };
 
-
-
 const resultsContainer = document.querySelector(".results");
 
-
 buildQuiz();
+
 const slides = document.querySelectorAll(".slide");
+// Обнуляем слайд
 let currentSlide = 0;
 showSlide(0);
 
