@@ -4,7 +4,8 @@ function init() {
     var myPlacemark,
         myMap = new ymaps.Map('map', {
             center: [55.753994, 37.622093],
-            zoom: 3
+            zoom: 3,
+            controls: ['zoomControl']
         }, {
             searchControlProvider: 'yandex#search'
         });
@@ -23,7 +24,7 @@ function init() {
             myMap.geoObjects.add(myPlacemark);
             // Слушаем событие окончания перетаскивания на метке.
             myPlacemark.events.add('dragend', function () {
-                getAddress(myPlacemark.geometry.getCoordinates());
+                getCountry(myPlacemark.geometry.getCoordinates());
             });
         }
         getCountry(coords);
