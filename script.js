@@ -34,7 +34,7 @@ function init() {
         return new ymaps.Placemark(coords, {
             iconCaption: 'Здесь'
         }, {
-            preset: 'islands#blackDotIconWithCaption',
+            preset: 'islands#yellowDotIconWithCaption',
             draggable: true
         });
     }
